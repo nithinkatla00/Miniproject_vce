@@ -6,7 +6,7 @@
   margin-top: 10%;
 }
 .brand-logo{
-  font-family:'Roboto Slab', serif;;
+  font-family:'Roboto Slab', serif;
   font-weight: bold;
 }
 /* signup */
@@ -52,7 +52,7 @@ a{
 }
 
 .home-card{
-  max-width: 500px;
+  max-width: 600px;
   height: max-content;
   margin: 26px auto;
   
@@ -80,3 +80,12 @@ a{
   }
 }
 
+
+.topnav input[type=search] {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 20px;
+  width:150px;
+  height:50px
+}

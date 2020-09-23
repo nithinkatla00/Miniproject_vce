@@ -10,6 +10,13 @@ export default (state = initialState, action) => {
   if (action.type === "LOGOUT") {
     return initialState
   }
+  if(action.type==="UPDATEINFO"){
+    return {...state,user:{
+      ...state.user,
+      ...action.payload
+    }
+  }
+  }
   if(action.type=="UPDATE"){
     return {
         ...state,

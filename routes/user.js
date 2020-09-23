@@ -5,6 +5,16 @@ const requireLogin  = require('../middleware/requireLogin')
 const Post =  mongoose.model("Post")
 const User = mongoose.model("User")
 
+router.get('/allusers',requireLogin,(req,res)=>{
+    User.find()
+    .select("-password")
+    .then(users=>{
+        res.json({users});
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+})
 
 router.get('/user/:id',requireLogin,(req,res)=>{
     User.findOne({_id:req.params.id})
@@ -78,6 +88,15 @@ router.put('/updatepic',requireLogin,(req,res)=>{
     })
 })
 
-
+router.put('/updatedetails',requireLogin,(req,res)=>{
+    User.findByIdAndUpdate(req.user._id,{name:req.body.username,
+            bloodgroup:req.body.bloodgroup,mobile:req.body.number,donatingblood:req.body.donatingblood,currentsem:req.body.currentsem,interests:req.body.interests,experience:req.body.experience},
+        (err,result)=>{
+         if(err){
+             return res.status(422).json({error:"cannot update your details"})
+         }
+         res.json({message:"saved successfully"})
+    })
+})
 
 module.exports = router

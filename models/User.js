@@ -13,6 +13,36 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    college:{
+        type:String,
+        required:true
+    },
+    branch:{
+        type:String,
+        required:true
+    },
+    bloodgroup:{
+        type:String,
+        default:""
+    },
+    mobile:{
+        type:Number
+    },
+    currentsem:{
+        type:String,
+    },
+    interests:{
+        type:Array,
+        default:[]
+    },
+    experience:{
+        type:Array,
+        default:[]
+    },
+    donatingblood:{
+        type:Boolean,
+        default:false
+    },
     pic:{
         type:String,
         default:"image"

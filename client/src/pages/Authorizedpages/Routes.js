@@ -11,6 +11,8 @@ function DashboardRoutes() {
       <Route path="/posts" component={Routes["Posts"]} />
       <Route path="/createpost" component={Routes["CreatePost"]} />
       <Route exact path="/profile" component={Routes["Profile"]} />
+      <Route exact path="/blooddonor" component={Routes["BloodGroups"]} />
+      <Route exact path="/updateinfo" component={Routes["Updateinfo"]} />
       <Route
         path="/followingposts"
         component={Routes["Subscriberposts"]}

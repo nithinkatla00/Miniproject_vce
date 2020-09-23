@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     float: "right",
     marginRight: "20px",
+    marginBottom:"8px"
   },
   sectionDesktop: {
     display: "none",
@@ -74,6 +75,9 @@ export default function Toolbar() {
       <MenuItem onClick={handleMenuClose}>
         <Link to="/profile">Profile</Link>
       </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link to="/blooddonor">Blooddonors</Link>
+      </MenuItem>
       <MenuItem onClick={logoutUser}>LogOut</MenuItem>
     </Menu>
   );
@@ -94,6 +98,9 @@ export default function Toolbar() {
           <AccountCircle />
         </IconButton>
         <Link to="/profile">Profile</Link>
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link to="/blooddonor">Blooddonors</Link>
       </MenuItem>
       <MenuItem onClick={logoutUser}>
         <IconButton>

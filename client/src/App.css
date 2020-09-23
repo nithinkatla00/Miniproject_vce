@@ -44,7 +44,10 @@
   display: grid;
   grid-template-columns: auto auto;
   margin-top: 10%;
+  background-image: url("./public/p5.jpg");
+  background-repeat: no-repeat;
 }
 .switch-component {
   text-align: center;
 }
+

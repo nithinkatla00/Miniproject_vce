@@ -3,7 +3,6 @@ import {useSelector} from 'react-redux';
 
 function Myprofile(){
     const state = useSelector(state => state.Auth.user)
-    console.log(state)
     return(
         <>
         {state!=null?(

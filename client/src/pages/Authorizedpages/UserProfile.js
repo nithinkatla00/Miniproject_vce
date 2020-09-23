@@ -83,7 +83,7 @@ const Userprofile  = ()=>{
    return (
        <>
        {userProfile ?
-       <div style={{maxWidth:"550px",margin:"0px auto"}}>
+       <div style={{maxWidth:"600px",margin:"0px auto"}}>
            <div style={{
                display:"flex",
                justifyContent:"space-around",
@@ -103,6 +103,10 @@ const Userprofile  = ()=>{
                        <h6>{userProfile.user.followers.length} followers</h6>
                        <h6>{userProfile.user.following.length} following</h6>
                    </div>
+                   <div style={{color:"black",fontSize:"15px",display:"flex",flexDirection:"row",paddingLeft:"5px",justifyContent:"center"}}>
+                        <h6>college:{state?state.college:"loading"}</h6>
+                        <h6 style={{paddingLeft:"10px"}}>branch:{state?state.branch:"loading"}</h6>
+                    </div>
                    {showfollow?
                    <button style={{
                        margin:"10px"
@@ -123,22 +127,23 @@ const Userprofile  = ()=>{
                     </button>
                     }
                    
-                  
-
                </div>
            </div>
      
-           <div className="gallery">
-               {
-                   userProfile.posts.map(item=>{
-                       return(
-                            <img key={item._id} className="item" src={item.photo} alt={item.title} height="200px"/>
-                       )
-                   })
-               }
-
-           
-           </div>
+            <div className="home">
+           {
+               userProfile.posts.map(item=>{
+                   return(
+                       <div className="card home-card" key={item._id}>
+                            <div className="card-image">
+                                <img src={item.photo}/>
+                            </div>
+                        </div>
+                   )
+               })
+           }   
+          
+       </div>
        </div>
        
        

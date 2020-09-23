@@ -23,7 +23,7 @@ export const SignIn  = ()=>{
    return (
       <div className="mycard">
           <div className="card auth-card input-field">
-            <h2>Palisade</h2>
+            <h2 style={{color:"black"}}>Palisade</h2>
             <input
             type="text"
             placeholder="email"
@@ -36,7 +36,7 @@ export const SignIn  = ()=>{
             value={password}
             onChange={(e)=>setPasword(e.target.value)}
             />
-            <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
+            <button className="btn waves-effect waves-light #94c1e0 darken-1"
             onClick={()=>PostData()}
             >
                 Login

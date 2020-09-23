@@ -3642,7 +3642,7 @@ header,
 main,
 menu,
 nav,
-section,
+div,
 summary {
   display: block;
 }
@@ -5183,12 +5183,12 @@ body {
 body,
 aside,
 .u-sidebar-block,
-section,
+div,
 header,
 footer {
   position: relative;
 }
-section > *,
+div > *,
 header > *,
 footer > *,
 .u-sheet > * {
@@ -7441,7 +7441,7 @@ img.u-image,
   background-repeat: repeat;
   background-position: top left !important;
 }
-section.u-image,
+div.u-image,
 .u-sheet.u-image,
 .u-group.u-image,
 .u-layout-cell.u-image {
@@ -16796,6 +16796,7 @@ a.pswp__share--download:hover {
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-width:100%;
 }
 .u-slider .u-carousel-inner > .u-carousel-item {
   flex: 1;

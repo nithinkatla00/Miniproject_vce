@@ -1,5 +1,7 @@
 import React,{useEffect,useState} from 'react'
+import {Link} from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
+import CreateIcon from '@material-ui/icons/Create'
 
 const Profile  = ()=>{
     const dispatch = useDispatch();
@@ -57,8 +59,23 @@ const Profile  = ()=>{
     const updatePhoto = (file)=>{
         setImage(file)
     }
+    const deletePost = (postid)=>{
+        fetch(`http://localhost:3000/deletepost/${postid}`,{
+            method:"delete",
+            headers:{
+                Authorization:"Bearer "+localStorage.getItem("jwt")
+            }
+        }).then(res=>res.json())
+        .then(result=>{
+            console.log(result)
+            const newData = mypics.filter(item=>{
+                return item._id !== result._id
+            })
+            setPics(newData)
+        })
+    }
    return (
-       <div style={{maxWidth:"550px",margin:"0px auto"}}>
+       <div style={{maxWidth:"600px",margin:"0px auto"}}>
            <div style={{
               margin:"18px 0px",
                borderBottom:"1px solid grey"
@@ -87,9 +104,13 @@ const Profile  = ()=>{
 
                </div>
            </div>
-        
+            <div style={{color:"black",fontSize:"15px",display:"flex",flexDirection:"row",paddingLeft:"5px",justifyContent:"center"}}>
+                <h6>college:{state?state.college:"loading"}</h6>
+                <h6 style={{paddingLeft:"10px"}}>branch:{state?state.branch:"loading"}</h6>
+                <Link to="/updateinfo"><CreateIcon style={{marginLeft:"10px",cursor:"pointer"}}/></Link>
+            </div>
             <div className="file-field input-field" style={{margin:"10px"}}>
-            <div className="btn #64b5f6 blue darken-1">
+            <div className="btn darken-1">
                 <span>Update pic</span>
                 <input type="file" onChange={(e)=>updatePhoto(e.target.files[0])} />
             </div>
@@ -98,17 +119,23 @@ const Profile  = ()=>{
             </div>
             </div>
             </div>      
-           <div className="gallery">
-               {
-                   mypics.map(item=>{
-                       return(
-                            <img key={item._id} className="item" src={item.photo} alt={item.title} height="200px"/>  
-                       )
-                   })
-               }
-
-           
-           </div>
+            <div className="home">
+           {
+               mypics.map(item=>{
+                   return(
+                       <>
+                       <h5 style={{marginLeft:"300px",color:"red",cursor:"pointer"}} onClick={()=>deletePost(item._id)}>delete</h5>
+                       <div className="card home-card" key={item._id}>
+                            <div className="card-image">
+                                <img src={item.photo}/>
+                            </div>
+                        </div> 
+                        </>
+                   )
+               })
+           }   
+          
+       </div>
        </div>
    )
 }

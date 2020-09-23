@@ -23,7 +23,7 @@ const Header = () => {
   })
   return (
     <div>
-    <nav>
+    <nav style={{lineHeight: "unset"}}>
     <div className="nav-wrapper" style={{ backgroundColor: "#e3f2fd" }}>
     <a href="#" data-target="slide-out" className="sidenav-trigger"><i class="material-icons">menu</i></a>
       <Link to="/" className="brand-logo">Palisade</Link>
@@ -45,7 +45,7 @@ const Header = () => {
                     UploadPost
                   </Link>
                 </li>
-                <li style={{marginTop:"6px"}}>
+                <li style={{marginTop:"5px"}}>
                   <Link to="/join">
                     <QuestionAnswerIcon fontSize="large" color="action"/>
                   </Link>
@@ -91,6 +91,11 @@ const Header = () => {
                 <li className="nav-item">
                   <Link className="nav-link" to="/createpost">
                     UploadPost
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/blooddonor">
+                    Blood donors
                   </Link>
                 </li>
                 <li>

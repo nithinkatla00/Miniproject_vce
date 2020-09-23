@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/Post');
 const requireLogin = require('../middleware/requireLogin')
-  
+const mongoose = require('mongoose')
+const Post = mongoose.model("Post")
+const User = mongoose.model("User")
 
 router.get('/allpost',requireLogin,(req,res)=>{
     Post.find()
@@ -27,6 +28,29 @@ router.get('/getsubpost',requireLogin,(req,res)=>{
     .catch(err=>{
         console.log(err);
     })
+})
+
+router.get('/bloodgroups',requireLogin,(req,res)=>{
+    const { bloodgroup } = req.body;
+    if(!bloodgroup){
+    User.find({donatingblood:true})
+    .select("-password")
+    .then(users=>{
+        res.json({users});
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}else{
+    User.find({bloodgroup:bloodgroup,donatingblood:true})
+    .select("-password")
+    .then(users=>{
+        res.json({users});
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
 })
 
 router.post('/createpost',requireLogin,(req,res)=>{

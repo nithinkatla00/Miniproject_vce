@@ -4,6 +4,8 @@ import M from 'materialize-css'
 export const SignUp  = ()=>{
     const history = useHistory()
     const [name,setName] = useState("")
+    const [college,setCollege] = useState("")
+    const [branch,setBranch] = useState("")
     const [password,setPasword] = useState("")
     const [email,setEmail] = useState("")
     const [image,setImage] = useState("")
@@ -44,7 +46,9 @@ export const SignUp  = ()=>{
                 name,
                 password,
                 email,
-                pic:url
+                pic:url,
+                college,
+                branch
             })
         }).then(res=>res.json())
         .then(data=>{
@@ -71,7 +75,7 @@ export const SignUp  = ()=>{
    return (
       <div className="mycard">
           <div className="card auth-card input-field">
-            <h2>Palisade</h2>
+            <h2 style={{color:"black"}}>Palisade</h2>
             <input
             type="text"
             placeholder="name"
@@ -90,8 +94,20 @@ export const SignUp  = ()=>{
             value={password}
             onChange={(e)=>setPasword(e.target.value)}
             />
+            <input
+            type="text"
+            placeholder="college Name"
+            value={college}
+            onChange={(e)=>setCollege(e.target.value)}
+            />
+            <input
+            type="text"
+            placeholder="Branch Name"
+            value={branch}
+            onChange={(e)=>setBranch(e.target.value)}
+            />
             <div className="file-field input-field">
-            <div className="btn #64b5f6 blue darken-1">
+            <div className="btn #94c1e0 darken-1">
                 <span>Upload pic</span>
                 <input type="file" onChange={(e)=>setImage(e.target.files[0])} />
             </div>
@@ -99,7 +115,7 @@ export const SignUp  = ()=>{
                 <input className="file-path validate" type="text" />
             </div>
             </div>
-            <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
+            <button className="btn waves-effect waves-light #94c1e0 darken-1"
             onClick={()=>PostData()}
             >
                 SignUP
